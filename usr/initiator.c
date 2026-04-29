@@ -317,6 +317,7 @@ __session_conn_create(iscsi_session_t *session, int cid)
 	/* TCP options */
 	conn->tcp_window_size = conn_rec->tcp.window_size;
 	/* FIXME: type_of_service */
+	memcpy(conn->tcp_congestion, conn_rec->tcp.congestion_control, sizeof(conn->tcp_congestion));
 
 	/* resolve the string address to an IP address */
 	err = iscsi_setup_portal(conn, conn_rec->address, conn_rec->port);
@@ -1504,7 +1505,7 @@ static void session_increase_wq_priority(struct iscsi_session *session)
 	closedir(proc_dir);
 fail:
 	log_warning("Could not set session%d priority. "
-		    "READ/WRITE throughout and latency could be affected.",
+		    "READ/WRITE throughput and latency could be affected.",
 		    session->id);
 }
 

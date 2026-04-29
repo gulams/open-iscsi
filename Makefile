@@ -7,7 +7,7 @@
 DESTDIR ?=
 
 # our VERSION String
-ISCSI_VERSION_STR ?= 2.1.10
+ISCSI_VERSION_STR ?= 2.1.11
 
 prefix = /usr
 exec_prefix =
@@ -77,7 +77,7 @@ user: deprecation_msg iscsiuio/Makefile
 	@echo
 	@echo "Read README file for detailed information."
 
-iscsiuio/Makefile: iscsiuio/configure iscsiuio/Makefile.in
+iscsiuio/Makefile: iscsiuio/configure
 	cd iscsiuio; ./configure $(WITHOUT_ARG) --sbindir=$(SBINDIR)
 
 iscsiuio/configure: iscsiuio/configure.ac iscsiuio/Makefile.am

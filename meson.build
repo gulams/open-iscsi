@@ -4,7 +4,7 @@
 
 project('open-iscsi', 'c',
   meson_version: '>= 0.54.0',
-  version: '2.1.10',
+  version: '2.1.11',
   license: 'LGPL-2.1-or-later',
   default_options: [
     'c_std=gnu99',
@@ -269,9 +269,6 @@ if not no_systemd
     install_dir: generator_dir,
     install_mode: 'rwxr-xr-x')
 endif
-
-# the iface.example file
-install_data(iscsi_etc_iface_file_src, install_dir: db_root / 'ifaces')
 
 # the iscsid.conf config file
 install_data(iscsi_etc_config_file_src, install_dir: home_dir)
